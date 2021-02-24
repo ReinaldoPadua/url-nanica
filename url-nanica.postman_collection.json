@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "5fda0c7b-f385-4c4d-a9a6-4c6e51c6e140",
+		"name": "url-nanica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://ec2-52-44-237-178.compute-1.amazonaws.com/short-url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"url\":\"http://google.com\",\"customerEmail\":\"reinaldo.padua@unoesc.edu.br\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-52-44-237-178.compute-1.amazonaws.com/short-url",
+					"protocol": "http",
+					"host": [
+						"ec2-52-44-237-178",
+						"compute-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"short-url"
+					]
+				},
+				"description": "URL: Campo obrigatório seguindo o formato protocolo://dominio\r\nCustomerEmail: Campo opcional"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/short-url",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"url\":\"http://gmail.com\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/short-url",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"short-url"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
