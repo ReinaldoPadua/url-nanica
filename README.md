@@ -44,8 +44,6 @@ $ npm run test
 # e2e tests
 $ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
 ```
 
 ## Exemplos Request / Response (Podem ser importados do arquivo url-nanica.postman_collection.json)
