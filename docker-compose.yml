@@ -1,6 +1,12 @@
 version: '3'
 
 services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - backend  
   pgsql:
     image: postgres:9.4
     ports:
@@ -13,10 +19,17 @@ services:
       POSTGRES_USER: pguser
       POSTGRES_PASSWORD:  pgpassword
       POSTGRES_DB: short_url_db
+    networks:
+      - backend  
   redis:
     image: "redis:alpine"
     ports:
       - '6379:6379'
+    networks:
+      - backend  
 volumes:
   pg-data:
   data01:
+networks:
+  backend:
+        
