@@ -33,7 +33,7 @@ A aplicação também está rodando em uma instância EC2 da AWS.
 ```bash
 # development
 $ docker-compose up
-
+```
 
 ## Rodando os testes
 
