@@ -22,30 +22,20 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Esta aplicação foi desenvolvida utilizando o framework Nestjs com a finalidade de prover o serviço de encurtamento de urls. Foi utilizado o banco de dados postgresql para persistência de dados e redis.io para cache de consultas provendo um melhor desempenho de requests. Para rodar app e serviços externos foi feito uso do docker-compose.
 
-## Installation
+A aplicação também está rodando em uma instância EC2 da AWS.
 
-```bash
-$ npm install
-```
-
-## Running the app
+## Rodando o app com docker-compose
 
 ```bash
 # development
-$ npm run start
+$ docker-compose up
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
+## Rodando os testes
 
 ```bash
 # unit tests
@@ -58,38 +48,42 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Request / Response
+## Exemplos Request / Response (Podem ser importados do arquivo url-nanica.postman_collection.json)
 
 ```bash
 curl --location --request POST 'http://ec2-52-44-237-178.compute-1.amazonaws.com/short-url' \
 --header 'Content-Type: application/json' \
 --data-raw '{"url":"http://google.com","customerEmail":"reinaldo.padua@unoesc.edu.br"}'
-```
 
-```bash
 {
     "newUrl": "http://ec2-52-44-237-178.compute-1.amazonaws.com/CDYpWPGgj",
     "expireAt": "2021-02-24T01:59:43.394Z"
 }
+
 ```
+
 
 ```bash
 curl --location --request POST 'localhost:3000/short-url' \
 --header 'Content-Type: application/json' \
 --data-raw '{"url":"http://gmail.com"}'
-```
 
-```bash
 {
     "newUrl": "http://localhost:3000/DocpqdUkr",
     "expireAt": "2021-02-24T02:10:30.998Z"
 }
+
 ```
 
-## Roadmap
--- Armazenar dados de redirect executados com finalidade de analise de dados futuras. 
--- Usar elasticsearch ou mongodb para armazenamento de logs.
--- Migrar de EC2 para uma arquitetura mais robusta (Api gateway + EBS + ECS usando cloud formation)
--- Build e deploy automatizado Travis, GitHub CI ou AWS Code Pipeline. 
+
+## Melhorias futuras
+
+Armazenar dados de redirect executados com finalidade de analise de dados futuras. 
+
+Usar elasticsearch ou mongodb para armazenamento de logs.
+
+Migrar de EC2 para uma arquitetura mais robusta (Api gateway + EBS + ECS usando cloud formation)
+
+Build e deploy automatizado Travis, GitHub CI ou AWS Code Pipeline. 
 
 
