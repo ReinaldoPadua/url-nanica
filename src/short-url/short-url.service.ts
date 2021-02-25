@@ -38,7 +38,13 @@ export class ShortUrlService {
   }
 
   async getOriginalUrlByShortUrlCode(shortUrlCode: string) {
-    let shortUrl = JSON.parse(await this.cacheManager.get(shortUrlCode));
+    let shortUrl;
+
+    try {
+      shortUrl = JSON.parse(await this.cacheManager.get(shortUrlCode));
+    } catch (error) {
+      console.log(error);
+    }
 
     if (!shortUrl) {
       shortUrl = await this.findShortUrl(shortUrlCode);
@@ -67,7 +73,6 @@ export class ShortUrlService {
   }
 
   private async addShortUrlToCache(shortUrl: ShortUrl) {
-    console.log(shortUrl);
     const shortUrlStringValue = JSON.stringify({
       expireAt: shortUrl.expireAt,
       originalUrl: shortUrl.originalUrl,

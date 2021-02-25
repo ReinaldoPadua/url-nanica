@@ -58,16 +58,38 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Request / Response
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+curl --location --request POST 'http://ec2-52-44-237-178.compute-1.amazonaws.com/short-url' \
+--header 'Content-Type: application/json' \
+--data-raw '{"url":"http://google.com","customerEmail":"reinaldo.padua@unoesc.edu.br"}'
+```
 
-## Stay in touch
+```bash
+{
+    "newUrl": "http://ec2-52-44-237-178.compute-1.amazonaws.com/CDYpWPGgj",
+    "expireAt": "2021-02-24T01:59:43.394Z"
+}
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+curl --location --request POST 'localhost:3000/short-url' \
+--header 'Content-Type: application/json' \
+--data-raw '{"url":"http://gmail.com"}'
+```
 
-## License
+```bash
+{
+    "newUrl": "http://localhost:3000/DocpqdUkr",
+    "expireAt": "2021-02-24T02:10:30.998Z"
+}
+```
 
-Nest is [MIT licensed](LICENSE).
+## Roadmap
+-- Armazenar dados de redirect executados com finalidade de analise de dados futuras. 
+-- Usar elasticsearch ou mongodb para armazenamento de logs.
+-- Migrar de EC2 para uma arquitetura mais robusta (Api gateway + EBS + ECS usando cloud formation)
+-- Build e deploy automatizado Travis, GitHub CI ou AWS Code Pipeline. 
+
+
