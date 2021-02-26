@@ -30,7 +30,7 @@ export class ShortUrlRepository extends Repository<ShortUrl> {
 
     const expDate = new Date();
     expDate.setMinutes(expDate.getMinutes() + Number(process.env.EXP_TIME));
-    console.log(expDate);
+
     shortUrl.expireAt = new Date(expDate);
 
     try {

@@ -42,9 +42,7 @@ export class ShortUrlService {
 
     try {
       shortUrl = JSON.parse(await this.cacheManager.get(shortUrlCode));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
 
     if (!shortUrl) {
       shortUrl = await this.findShortUrl(shortUrlCode);
