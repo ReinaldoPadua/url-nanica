@@ -10,7 +10,7 @@ import * as redisStore from 'cache-manager-redis-store';
     TypeOrmModule.forFeature([ShortUrlRepository]),
     CacheModule.register({
       store: redisStore,
-      host: process.env.REDIS_URL || 'localhost',
+      host: process.env.REDIS_URL || 'redis',
       port: Number(process.env.REDIS_PORT),
     }),
   ],
